@@ -93,6 +93,8 @@ public class CallMediator extends AbstractMediator implements ManagedLifecycle {
 
     private String axis2xml = null;
 
+    private String axis3xml = null;
+
     private SynapseEnvironment synapseEnv;
 
     //State whether actual endpoint(when null) is wrapped by a default endpoint
@@ -373,7 +375,6 @@ public class CallMediator extends AbstractMediator implements ManagedLifecycle {
                 synCtx.setProperty(SynapseConstants.ERROR_MESSAGE, "Error while performing " +
                         "the call operation");
             }
-
             if (axisFault.getFaultDetailElement() != null) {
                 if (axisFault.getFaultDetailElement().getFirstElement() != null) {
                     synCtx.setProperty(SynapseConstants.ERROR_DETAIL,
@@ -384,7 +385,6 @@ public class CallMediator extends AbstractMediator implements ManagedLifecycle {
                 }
             }
         }
-
         synCtx.setProperty(SynapseConstants.ERROR_EXCEPTION, ex);
         throw new SynapseException("Error while performing the call operation", ex);
     }
@@ -404,3 +404,5 @@ public class CallMediator extends AbstractMediator implements ManagedLifecycle {
     }
 
 }
+
+
